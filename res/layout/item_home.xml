@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/seleter_app_bg"
+    android:clickable="true"
+    android:focusable="true" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="113dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp" >
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_launcher" />
+
+        <TextView
+            android:id="@+id/txt_app_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@id/iv_icon"
+            android:singleLine="true"
+            android:textColor="#ff7a7a7a"
+            android:textSize="12sp" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="14dp"
+            android:layout_below="@id/txt_app_name"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="3dp"
+            android:layout_toRightOf="@+id/iv_icon"
+            android:progressDrawable="@drawable/bg_ratinbar"
+            android:rating="5" />
+
+        <TextView
+            android:id="@+id/txt_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/txt_app_name"
+            android:layout_below="@+id/ratingBar"
+            android:layout_marginTop="2dp"
+            android:singleLine="true"
+            android:textColor="#ff7a7a7a"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/btn_download"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_margin="20dp"
+            android:background="@drawable/ic_download"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <View
+            android:id="@+id/item_divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/iv_icon"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="10dp"
+            android:background="#ffd7d7d7" />
+
+        <TextView
+            android:id="@+id/txt_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_divider"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:padding="8dp"
+            android:singleLine="true"
+            android:textColor="#ff717171"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+</FrameLayout>
