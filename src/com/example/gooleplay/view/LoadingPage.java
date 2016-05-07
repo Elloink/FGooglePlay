@@ -190,6 +190,7 @@ public abstract class LoadingPage extends FrameLayout {
 
 	/*
 	 * 从服务器获取数据和状态
+	 * 此方法运行在子线程中
 	 * 将获取数据的方法进行抽象出来，因为每个界面获取数据的路径等不一样
 	 */
 	protected abstract int getStateAndDataFromService();

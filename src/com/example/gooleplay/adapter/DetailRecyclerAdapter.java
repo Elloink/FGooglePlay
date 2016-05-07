@@ -19,7 +19,7 @@ public class DetailRecyclerAdapter extends RecyclerView.Adapter {
 	AppDataBean mData;
 	private Context mContext;
 
-	public DetailRecyclerAdapter(AppDataBean data ,Context context) {
+	public DetailRecyclerAdapter(AppDataBean data, Context context) {
 		mData = data;
 		mContext = context;
 	}
@@ -31,11 +31,11 @@ public class DetailRecyclerAdapter extends RecyclerView.Adapter {
 
 	@Override
 	public void onBindViewHolder(ViewHolder holder, int arg1) {
-		if(holder == null || !(holder instanceof BaseHolder)) {
+		if (holder == null || !(holder instanceof BaseHolder)) {
 			throw new RuntimeException("ViewHolder转换出问题");
 		}
-		//进行强转，然后绑定数据
-		((BaseHolder<AppDataBean>)holder).bindViewWithData(mData);
+		// 进行强转，然后绑定数据
+		((BaseHolder<AppDataBean>) holder).bindViewWithData(mData);
 	}
 
 	@Override

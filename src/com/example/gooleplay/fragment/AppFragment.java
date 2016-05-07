@@ -23,12 +23,6 @@ import com.example.gooleplay.protocol.AppProtocol;
 public class AppFragment extends BaseFragment {
 	private ArrayList<AppDataBean> dataList;
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		return super.onCreateView(inflater, container, savedInstanceState);
-	}
-
 	/* 当成果获取数据的时候，构建成功页面 */
 	@Override
 	protected View createSuccessView() {

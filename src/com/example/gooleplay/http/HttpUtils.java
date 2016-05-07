@@ -7,6 +7,11 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import com.lidroid.xutils.exception.HttpException;
+import com.lidroid.xutils.http.ResponseInfo;
+import com.lidroid.xutils.http.callback.RequestCallBack;
+import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
+
 public class HttpUtils {
 	/**
 	 * 用于进行网络请求
@@ -58,5 +63,21 @@ public class HttpUtils {
 			}
 		}
 		return null;
+	}
+	
+	public static String request4Data1(String requestUrl , RequestCallBack<String> callback) {
+		com.lidroid.xutils.HttpUtils httpUtils = new com.lidroid.xutils.HttpUtils();
+		httpUtils.send(HttpMethod.GET, requestUrl, new RequestCallBack<String>() {
+
+			@Override
+			public void onFailure(HttpException arg0, String arg1) {
+			}
+
+			@Override
+			public void onSuccess(ResponseInfo<String> arg0) {
+			}
+		});
+		
+		return "";
 	}
 }

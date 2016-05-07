@@ -11,7 +11,6 @@ import com.example.gooleplay.http.HttpUtils;
 import com.example.gooleplay.utils.FileUtils;
 import com.example.gooleplay.utils.HttpUrlUtils;
 import com.example.gooleplay.utils.QuiteClose;
-import com.example.gooleplay.utils.ThreadPoolManager;
 
 public abstract class BaseProtocol<Data> {
 	public Data load(int index) {
