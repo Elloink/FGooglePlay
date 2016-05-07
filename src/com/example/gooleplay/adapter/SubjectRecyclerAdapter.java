@@ -15,6 +15,11 @@ import com.example.gooleplay.holder.SubjectViewHolder;
 import com.example.gooleplay.protocol.BaseProtocol;
 import com.example.gooleplay.protocol.SubjectProtocol;
 
+/**
+ * 专题页面的适配器
+ * @author admin
+ *
+ */
 public class SubjectRecyclerAdapter extends
 		BaseRecyclerViewAdapter<List<SubjectBean>, SubjectBean> {
 

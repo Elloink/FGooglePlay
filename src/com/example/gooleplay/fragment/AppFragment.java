@@ -3,17 +3,14 @@ package com.example.gooleplay.fragment;
 import java.util.ArrayList;
 
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.example.gooleplay.adapter.AppRecyclerViewAdapter;
 import com.example.gooleplay.bean.AppDataBean;
-import com.example.gooleplay.gloable.MyApplication;
 import com.example.gooleplay.gloable.PageStateCode;
 import com.example.gooleplay.protocol.AppProtocol;
 

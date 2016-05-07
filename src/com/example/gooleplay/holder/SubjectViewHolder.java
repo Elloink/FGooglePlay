@@ -10,6 +10,11 @@ import com.example.gooleplay.bean.SubjectBean;
 import com.example.gooleplay.utils.BitmapUtilsHelper;
 import com.example.gooleplay.utils.HttpUrlUtils;
 
+/**
+ * 专题页面的item的Holder
+ * @author admin
+ *
+ */
 public class SubjectViewHolder extends BaseHolder<SubjectBean> {
 
 	public SubjectViewHolder(View itemView, Context context) {

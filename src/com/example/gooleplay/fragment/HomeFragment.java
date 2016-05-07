@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.gooleplay.R;
+import com.example.gooleplay.activity.DetailActivity;
 import com.example.gooleplay.adapter.HomeAdapter;
 import com.example.gooleplay.bean.HomeDataBean;
 import com.example.gooleplay.gloable.PageStateCode;
@@ -69,14 +71,21 @@ public class HomeFragment extends BaseFragment {
 		adapter.setOnItemClickListener(new com.example.gooleplay.adapter.BaseRecyclerViewAdapter.OnItemClickListener() {
 			@Override
 			public void onItemClick(View v, int position) {
-				System.out.println("发生了单击事件" + position);
+				int realPosition = position - 1;
+				// 处理单击事件，并且传递被单击的数据
+				handleOnClickEvent(realPosition , mDataList.get(realPosition).getPackageName());
 			}
 		});
 		// 设置布局管理
 		recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
-		
-		
 		return view;
+	}
+	
+	//处理单击事件,实现单击打开下一个页面
+	private void handleOnClickEvent(int positon, String packageName) {
+		Intent intent = new Intent(getActivity() , DetailActivity.class);
+		intent.putExtra("pkg", packageName);
+		startActivity(intent);
 	}
 }
 

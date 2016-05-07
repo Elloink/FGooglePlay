@@ -39,6 +39,7 @@ public class HttpUtils {
 					// 构建数据
 					sb.append(temp + "\r\n");
 				}
+				connection.disconnect();
 				// 返回JSON值
 				return sb.toString();
 			}
@@ -58,5 +59,4 @@ public class HttpUtils {
 		}
 		return null;
 	}
-
 }

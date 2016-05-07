@@ -8,6 +8,11 @@ import android.widget.LinearLayout;
 import com.example.gooleplay.R;
 import com.example.gooleplay.adapter.BaseRecyclerViewAdapter;
 
+/**
+ * 底部加载更多的加载item界面
+ * @author admin
+ *
+ */
 public class LoadingHolder extends BaseHolder {
 
 	public static final int LOADING = 1;

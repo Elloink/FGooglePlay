@@ -41,7 +41,6 @@ public abstract class LoadingPage extends FrameLayout {
 	public LoadingPage(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		init();
-
 	}
 
 	public LoadingPage(Context context) {
@@ -136,7 +135,6 @@ public abstract class LoadingPage extends FrameLayout {
 									// 当获取到数据后，改变界面显示
 									currentState = stateFromService;
 									UiUtils.runOnUiThread(new Runnable() {
-
 										@Override
 										public void run() {
 											showViewByState();

@@ -79,7 +79,6 @@ public abstract class BaseRecyclerViewAdapter<T, E> extends
 		holder.bindViewWithData(getItem(position));
 		// 设置单击事件
 		holder.itemView.setOnClickListener(new OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
 				if (mListener != null) {

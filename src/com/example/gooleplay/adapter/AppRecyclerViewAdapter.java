@@ -15,6 +15,11 @@ import com.example.gooleplay.holder.LoadingHolder;
 import com.example.gooleplay.protocol.AppProtocol;
 import com.example.gooleplay.protocol.BaseProtocol;
 
+/**
+ * 应用界面的recyclerview的Adapter，用于给应用界面的recyclerview提供适配
+ * @author admin
+ *
+ */
 public class AppRecyclerViewAdapter extends BaseRecyclerViewAdapter<List<AppDataBean>, AppDataBean> {
 
 	public AppRecyclerViewAdapter(List<AppDataBean> datas, Context context) {

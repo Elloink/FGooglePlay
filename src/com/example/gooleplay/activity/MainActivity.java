@@ -27,6 +27,11 @@ import com.example.gooleplay.fragment.BaseFragment;
 import com.example.gooleplay.fragment.FragmentFactory;
 import com.example.gooleplay.fragment.LeftMenuFragment;
 
+/**
+ * Ê×Ò³µÄactivity
+ * @author admin
+ *
+ */
 @SuppressLint("NewApi")
 public class MainActivity extends ActionBarActivity implements
 		OnQueryTextListener {

@@ -9,6 +9,13 @@ import android.widget.RatingBar;
 import com.example.gooleplay.R;
 import com.example.gooleplay.bean.AppDataBean;
 
+
+/**
+ * 应用界面的每个item的Holder
+ * 创建应用界面的item布局
+ * @author admin
+ *
+ */
 public class AppViewHolder extends BaseHolder<AppDataBean> {
 
 	public AppViewHolder(View itemView, Context context) {

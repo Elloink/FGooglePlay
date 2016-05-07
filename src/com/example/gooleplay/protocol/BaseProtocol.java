@@ -11,6 +11,7 @@ import com.example.gooleplay.http.HttpUtils;
 import com.example.gooleplay.utils.FileUtils;
 import com.example.gooleplay.utils.HttpUrlUtils;
 import com.example.gooleplay.utils.QuiteClose;
+import com.example.gooleplay.utils.ThreadPoolManager;
 
 public abstract class BaseProtocol<Data> {
 	public Data load(int index) {
@@ -41,8 +42,11 @@ public abstract class BaseProtocol<Data> {
 	 */
 	private String loadDataFromServer(int index) {
 		String data = null;
+		String requestURL = getSpecialRequestURL();
 		// 构建请求地址
-		String requestURL = HttpUrlUtils.getDataUrl(getKey(), index);
+		if (requestURL == null) {
+			requestURL = HttpUrlUtils.getDataUrl(getKey(), index);
+		}
 		System.out.println("requestURL + : " + requestURL);
 		try {
 			data = HttpUtils.request4Data(requestURL);
@@ -54,6 +58,15 @@ public abstract class BaseProtocol<Data> {
 			e.printStackTrace();
 		}
 		return data;
+	}
+
+	/**
+	 * 获得特殊的请求链接 默认为null，如果不为空表示有特殊链接的请求
+	 * 
+	 * @return
+	 */
+	protected String getSpecialRequestURL() {
+		return null;
 	}
 
 	/**
@@ -71,14 +84,19 @@ public abstract class BaseProtocol<Data> {
 		sb.append("\r\n"); // 进行换行
 		sb.append(json);
 
-		File cacheFile = new File(FileUtils.getCacheFile(), getKey() + "_"
-				+ index);
+		// 创建缓存路径
+		File cacheFile;
+		if (index == -1) {
+			cacheFile = new File(FileUtils.getCacheFile(), getKey());
+		} else {
+			cacheFile = new File(FileUtils.getCacheFile(), getKey() + "_"
+					+ index);
+		}
 		System.out.println("cacheFiel is " + cacheFile);
 		FileWriter fileWriter = null;
 		try {
 			fileWriter = new FileWriter(cacheFile);
 			fileWriter.write(sb.toString());
-			// System.err.println("write data to the local successfully");
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
@@ -98,9 +116,14 @@ public abstract class BaseProtocol<Data> {
 	 * @return 返回获取到的json字符串
 	 */
 	private String loadDataFromLocal(int index) {
+		File cacheFile;
 		// 获取到缓存文件
-		File cacheFile = new File(FileUtils.getCacheFile(), getKey() + "_"
-				+ index);
+		if (index == -1) {
+			cacheFile = new File(FileUtils.getCacheFile(), getKey());
+		} else {
+			cacheFile = new File(FileUtils.getCacheFile(), getKey() + "_"
+					+ index);
+		}
 		// 判断是否存在
 		if (!cacheFile.exists()) {
 			return null;

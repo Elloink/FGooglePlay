@@ -11,6 +11,11 @@ import com.example.gooleplay.bean.HomeDataBean;
 import com.example.gooleplay.utils.BitmapUtilsHelper;
 import com.example.gooleplay.utils.HttpUrlUtils;
 
+/**
+ * 首页的应用item的Holder
+ * @author admin
+ *
+ */
 public class HomeViewHolder extends BaseHolder<HomeDataBean> {
 
 	public HomeViewHolder(View itemView, Context context) {

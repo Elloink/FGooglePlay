@@ -19,7 +19,16 @@ public class HttpUrlUtils {
 	}
 	
 	public static String getDataUrl(String key , int index) {
-		//http://127.0.0.1:8090/home?index=" + index
-		return HOME_URL + key + "?index=" + index; //"http://127.0.0.1:8090/home?index=" + index;
+		//如果是请求详细信息的时候
+		if(key  != null && key.equals(".")) {
+			return getDetailsUrl(key);
+		} else {
+			//http://127.0.0.1:8090/home?index=" + index
+			return HOME_URL + key + "?index=" + index; //"http://127.0.0.1:8090/home?index=" + index;
+		}
+	}
+	
+	public static String getDetailsUrl(String packageName) {
+		return HOME_URL + "detail?packageName=" + packageName;
 	}
 }

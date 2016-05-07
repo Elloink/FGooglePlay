@@ -18,6 +18,11 @@ import com.example.gooleplay.holder.HomeViewPager;
 import com.example.gooleplay.protocol.BaseProtocol;
 import com.example.gooleplay.protocol.HomeProtocol;
 
+/**
+ * Ê×Ò³µÄrecyclerviewµÄÊÊÅäÆ÷
+ * @author admin
+ *
+ */
 public class HomeAdapter extends
 		BaseRecyclerViewAdapter<ArrayList<HomeDataBean>, HomeDataBean> {
 	
