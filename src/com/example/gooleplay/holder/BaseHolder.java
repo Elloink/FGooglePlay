@@ -24,6 +24,10 @@ public abstract class BaseHolder<E> extends ViewHolder {
 		views = new SparseArray<View>();
 		mContext = context;
 	}
+	
+	public void changeItemView(View newItemView) {
+		itemView = newItemView;
+	}
 
 	/**
 	 * °ó¶¨ViewºÍData

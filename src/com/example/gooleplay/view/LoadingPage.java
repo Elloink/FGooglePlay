@@ -31,8 +31,6 @@ public abstract class LoadingPage extends FrameLayout {
 	private View emptyView;
 	private View successView;
 	
-	
-	
 	public LoadingPage(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
 		init();

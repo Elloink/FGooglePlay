@@ -6,6 +6,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.util.Log;
+
 import com.example.gooleplay.bean.AppDataBean;
 import com.example.gooleplay.bean.AppDataBean.SafeInfo;
 import com.example.gooleplay.utils.HttpUrlUtils;
@@ -17,6 +19,7 @@ import com.example.gooleplay.utils.HttpUrlUtils;
  *
  */
 public class DetailProtocol extends BaseProtocol<AppDataBean> {
+	private static final String DEBUG_TAG = "DetailProtocol";
 	public String packageName;
 
 	public DetailProtocol(String packageName) {
@@ -39,10 +42,11 @@ public class DetailProtocol extends BaseProtocol<AppDataBean> {
 			bean.setDownloadNum(rootJsonObject.getString("downloadNum"));
 			bean.setVersion(rootJsonObject.getString("version"));
 			bean.setDate(rootJsonObject.getString("date"));
+			bean.setAuthor(rootJsonObject.getString("author"));
 			//ªÒ»°±Í«©
 			JSONArray safeInfoJsonArray = rootJsonObject.getJSONArray("safe");
 			ArrayList<SafeInfo> safeInfos = new ArrayList<AppDataBean.SafeInfo>();
-			for(int i = 0; i < safeInfos.size(); i++) {
+			for(int i = 0; i < safeInfoJsonArray.length(); i++) {
 				SafeInfo info = bean.new SafeInfo();
 				JSONObject safeInfoJsonObject = safeInfoJsonArray.getJSONObject(i);
 				info.safeDes = safeInfoJsonObject.getString("safeDes");

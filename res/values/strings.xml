@@ -8,6 +8,7 @@
     <string name="search_hint">输入搜索的内容</string>
     <string name="open_drawer">抽屉打开了</string>
     <string name="close_drawer">抽屉关闭了</string>
+    <string name="app_detail_introduction">简介</string>
 
     <string-array name="tab_names">
         <item>首页</item>

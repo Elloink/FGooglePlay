@@ -20,6 +20,7 @@ public class AppDataBean {
 	private double size;
 	private String downloadUrl;
 	private String des;
+	private String author;
 	private String version;
 	private String downloadNum;
 	private String date;
@@ -98,6 +99,15 @@ public class AppDataBean {
 
 	public String getName() {
 		return name;
+	}
+	
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 
 	public void setName(String name) {

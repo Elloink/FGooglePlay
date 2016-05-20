@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#fff"
+        android:focusable="false"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/rl_app_state_img_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:clickable="true"
+            android:focusable="true" >
+
+            <LinearLayout
+                android:id="@+id/ll_app_state_img_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:focusable="false"
+                android:orientation="horizontal" >
+
+                <!-- 这里动态的添加img进来，通过代码添加 -->
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/iv_arrow"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="8dp"
+                android:clickable="false"
+                android:focusable="false"
+                android:src="@drawable/arrow_down" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_app_state_txt_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <!-- 这里动态添加安全信息 item_safe_des.xml -->
+
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>
