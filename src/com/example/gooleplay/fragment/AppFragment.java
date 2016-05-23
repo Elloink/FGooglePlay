@@ -2,6 +2,7 @@ package com.example.gooleplay.fragment;
 
 import java.util.ArrayList;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.gooleplay.activity.DetailActivity;
 import com.example.gooleplay.adapter.AppRecyclerViewAdapter;
 import com.example.gooleplay.bean.AppDataBean;
 import com.example.gooleplay.gloable.PageStateCode;
@@ -31,6 +33,16 @@ public class AppFragment extends BaseFragment {
 		AppRecyclerViewAdapter adapter = new AppRecyclerViewAdapter(dataList,
 				getActivity());
 		recyclerView.setAdapter(adapter);
+		
+		adapter.setOnItemClickListener(new com.example.gooleplay.adapter.BaseRecyclerViewAdapter.OnItemClickListener() {
+			@Override
+			public void onItemClick(View v, int position) {
+				int realPosition = position - 1;
+				// 处理单击事件，并且传递被单击的数据
+				handleOnClickEvent(realPosition , dataList.get(realPosition).getPackageName());
+			}
+		});
+		
 		recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 		return recyclerView;
 	}
@@ -49,5 +61,12 @@ public class AppFragment extends BaseFragment {
 					: PageStateCode.STATE_SUCCESS;
 		}
 	}
+	
+	//处理单击事件,实现单击打开下一个页面
+		private void handleOnClickEvent(int positon, String packageName) {
+			Intent intent = new Intent(getActivity() , DetailActivity.class);
+			intent.putExtra("pkg", packageName);
+			startActivity(intent);
+		}
 
 }

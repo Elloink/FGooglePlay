@@ -5,6 +5,7 @@ import java.util.List;
 import android.content.Context;
 import android.os.SystemClock;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -26,6 +27,7 @@ import com.example.gooleplay.utils.UiUtils;
  */
 public abstract class BaseRecyclerViewAdapter<T, E> extends
 		RecyclerView.Adapter<BaseHolder<E>> {
+	private String DEBUG_TAG = "BaseRecyclerViewAdapter";
 	protected List<E> mDatas;
 	protected Context mContext;
 	private OnItemClickListener mListener;
@@ -150,6 +152,7 @@ public abstract class BaseRecyclerViewAdapter<T, E> extends
 			@Override
 			public void run() {
 				int page = (getItemCount() / 20 );
+				Log.d(DEBUG_TAG, "当前加载的页面为:" + page);
 				BaseProtocol<T> protocol = getProtocol();
 				final List moreData = (List)protocol.load(page);
 				SystemClock.sleep(1500);

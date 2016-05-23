@@ -1,7 +1,5 @@
 package com.example.gooleplay.holder;
 
-import java.util.Date;
-
 import android.content.Context;
 import android.text.format.Formatter;
 import android.view.View;
@@ -9,7 +7,6 @@ import android.widget.RatingBar;
 
 import com.example.gooleplay.R;
 import com.example.gooleplay.bean.AppDataBean;
-import com.example.gooleplay.utils.BitmapUtilsHelper;
 
 /**
  * 用于详情页面顶部部分的Holder

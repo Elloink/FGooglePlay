@@ -92,7 +92,7 @@ public class DetailFooterHolder extends BaseHolder<AppDataBean> {
 		int heightMeasureSpec = MeasureSpec.makeMeasureSpec((1 << 30) - 1, MeasureSpec.AT_MOST);
 		tv.measure(widthMeasureSpec, heightMeasureSpec);
 		result = tv.getMeasuredHeight();
-		Log.d(DEBUG_TAG, "测量到的7行字体的高度为 : "+ result);
+//		Log.d(DEBUG_TAG, "测量到的7行字体的高度为 : "+ result);
 		tv = null;
 		layoutParams = null;
 		return result;
@@ -103,7 +103,7 @@ public class DetailFooterHolder extends BaseHolder<AppDataBean> {
 		int widthMeasureSpec = MeasureSpec.makeMeasureSpec(desContent.getWidth(), MeasureSpec.EXACTLY);
 		int heightMeasureSpec = MeasureSpec.makeMeasureSpec((1 << 30) - 1, MeasureSpec.AT_MOST);
 		desContent.measure(widthMeasureSpec, heightMeasureSpec);
-		Log.d(DEBUG_TAG, "获取到的全部高度为: " +desContent.getMeasuredHeight());
+//		Log.d(DEBUG_TAG, "获取到的全部高度为: " +desContent.getMeasuredHeight());
 		return desContent.getMeasuredHeight();
 	}
 	

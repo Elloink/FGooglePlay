@@ -2,6 +2,7 @@ package com.example.gooleplay.holder;
 
 import java.util.ArrayList;
 
+import android.R.integer;
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import android.animation.ValueAnimator;
@@ -63,7 +64,6 @@ public class DetailMHPHolder extends BaseHolder<AppDataBean> {
 	 */
 	private void handleOnClick() {
 		RelativeLayout rl_container = (RelativeLayout) getView(R.id.rl_app_state_img_container);
-
 		rl_container.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -112,6 +112,7 @@ public class DetailMHPHolder extends BaseHolder<AppDataBean> {
 			layoutParams.leftMargin = UiUtils.dp2px(8);
 			layoutParams.bottomMargin = UiUtils.dp2px(5);
 			itemSafeDes.setLayoutParams(layoutParams);
+			
 			ImageView ivSafeDes = (ImageView) UiUtils.getView(itemSafeDes,
 					R.id.iv_safe_des);
 			TextView txtSafeDes = (TextView) itemSafeDes
@@ -124,21 +125,24 @@ public class DetailMHPHolder extends BaseHolder<AppDataBean> {
 			txtSafeDes.setText(safeInfos.get(count).safeDes);
 
 			// 根据服务器数据显示不同的颜色
-			int color;
-			int colorType = safeInfos.get(count).safeDesColor;
-			if (colorType >= 1 && colorType <= 3) {
-				color = Color.rgb(255, 153, 0); // 00 00 00
-			} else if (colorType == 4) {
-				color = Color.rgb(0, 177, 62);
-			} else {
-				color = Color.rgb(122, 122, 122);
-			}
-
+			int color = getColor(safeInfos.get(count).safeDesColor);
 			txtSafeDes.setTextColor(color);
 
 			container.addView(itemSafeDes);
 		}
 
+	}
+	
+	private int getColor(int colorType) {
+		int color;
+		if (colorType >= 1 && colorType <= 3) {
+			color = Color.rgb(255, 153, 0); // 00 00 00
+		} else if (colorType == 4) {
+			color = Color.rgb(0, 177, 62);
+		} else {
+			color = Color.rgb(122, 122, 122);
+		}
+		return color;
 	}
 	
 
@@ -152,16 +156,20 @@ public class DetailMHPHolder extends BaseHolder<AppDataBean> {
 			LinearLayout container) {
 		// 循环构建view
 		for (int count = 0; count < safeCount; count++) {
+			
 			ImageView safeIcon = new ImageView(mContext);
 			safeIcon.setScaleType(ScaleType.FIT_XY);
+			
 			LinearLayout.LayoutParams layoutParams = new LayoutParams(
 					UiUtils.dp2px(50), UiUtils.dp2px(25));
 			layoutParams.leftMargin = UiUtils.dp2px(10);
 			safeIcon.setLayoutParams(layoutParams);
+			
 			// 绑定数据
 			BitmapUtils bitmapUtils = BitmapUtilsHelper.getInstance();
 			bitmapUtils.display(safeIcon,
 					HttpUrlUtils.getImageUrl(safeInfos.get(count).safeUrl));
+			
 			container.addView(safeIcon);
 		}
 	}
@@ -170,14 +178,18 @@ public class DetailMHPHolder extends BaseHolder<AppDataBean> {
 	 * 根据标志位，改变容器的显示状态 如果
 	 */
 	private void changeListState() {
+		//动画的操作对象
 		final LinearLayout llAppStateTxtContainer = (LinearLayout) getView(R.id.ll_app_state_txt_container);
 		final android.view.ViewGroup.LayoutParams llAppStateTxtContainerLayoutParams = llAppStateTxtContainer
 				.getLayoutParams();
+		
 		if (isFirstComeIn) {
 			//第一次进入，记录高度
 			mTxtContainerHeight = llAppStateTxtContainer.getMeasuredHeight();
 			isFirstComeIn = false;
 		}
+		
+		//动画处理部分
 		ValueAnimator animator = null;
 		if (isStretchState) {
 			// 当前为伸展状态则改变为收缩
@@ -212,6 +224,7 @@ public class DetailMHPHolder extends BaseHolder<AppDataBean> {
 		}
 		animator.setDuration(300);
 		animator.start();
+		
 		isStretchState = !isStretchState;
 	}
 
