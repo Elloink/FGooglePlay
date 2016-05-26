@@ -6,9 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
-import android.widget.FrameLayout;
 
-import com.example.gooleplay.gloable.PageStateCode;
 import com.example.gooleplay.view.LoadingPage;
 
 /**

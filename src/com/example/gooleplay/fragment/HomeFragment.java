@@ -1,7 +1,6 @@
 package com.example.gooleplay.fragment;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import android.content.Context;
 import android.content.Intent;

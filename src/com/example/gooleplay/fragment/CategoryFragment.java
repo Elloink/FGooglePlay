@@ -1,15 +1,19 @@
 package com.example.gooleplay.fragment;
 
-import java.util.Random;
-
-import com.example.gooleplay.gloable.MyApplication;
+import java.util.ArrayList;
 
 import android.os.Bundle;
-import android.os.SystemClock;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+
+import com.example.gooleplay.adapter.CategoryRecyclerAdapter;
+import com.example.gooleplay.bean.CategoryDataBean.SingleCategoryData;
+import com.example.gooleplay.gloable.MyApplication;
+import com.example.gooleplay.gloable.PageStateCode;
+import com.example.gooleplay.protocol.CategoryProtocol;
 
 /**
  * 首页Fragment
@@ -17,6 +21,8 @@ import android.widget.TextView;
  *
  */
 public class CategoryFragment extends BaseFragment {
+	private ArrayList<SingleCategoryData> mDatas;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -25,16 +31,27 @@ public class CategoryFragment extends BaseFragment {
 
 	@Override
 	protected View createSuccessView() {
-		TextView tv = new TextView(MyApplication.getContext());
-		tv.setText("Categ加载成功");
-		return tv;
+		RecyclerView categoryRecyclerView = new RecyclerView(MyApplication.getContext());
+		categoryRecyclerView.setAdapter(new CategoryRecyclerAdapter(mDatas));
+		
+		categoryRecyclerView.setLayoutManager(new LinearLayoutManager(MyApplication.getContext()));
+		
+		return categoryRecyclerView;
 	}
 
 	@Override
 	protected int getStateAndDataFromService() {
-		synchronized(this) {
-			SystemClock.sleep(2000);
-			return 2;
+		
+		CategoryProtocol categoryProtocol = new CategoryProtocol();
+		if(categoryProtocol.load(0) == null) {
+			return PageStateCode.STATE_ERROR;
+		}
+		mDatas = categoryProtocol.load(0).datas;
+		if (mDatas == null) {
+			return PageStateCode.STATE_ERROR;
+		} else {
+			return mDatas.size() == 0 ? PageStateCode.STATE_EMPTY
+					: PageStateCode.STATE_SUCCESS;
 		}
 	}
 	 

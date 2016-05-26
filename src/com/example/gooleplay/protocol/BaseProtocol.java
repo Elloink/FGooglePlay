@@ -7,6 +7,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import android.util.Log;
+
+import com.example.gooleplay.gloable.PageStateCode;
 import com.example.gooleplay.http.HttpUtils;
 import com.example.gooleplay.utils.FileUtils;
 import com.example.gooleplay.utils.HttpUrlUtils;
@@ -166,4 +169,5 @@ public abstract class BaseProtocol<Data> {
 	 * @return 当前页面的种类字符串
 	 */
 	protected abstract String getKey();
+	
 }

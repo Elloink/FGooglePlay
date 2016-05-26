@@ -54,8 +54,7 @@ public abstract class BaseRecyclerViewAdapter<T, E> extends
 			mListener = listener;
 		}
 	}
-
-	// *******************************
+	// ----------------------------------------------------
 
 	@Override
 	public int getItemCount() {
@@ -151,8 +150,8 @@ public abstract class BaseRecyclerViewAdapter<T, E> extends
 
 			@Override
 			public void run() {
-				int page = (getItemCount() / 20 );
-				Log.d(DEBUG_TAG, "当前加载的页面为:" + page);
+				int page = getItemCount() ;
+				Log.d(DEBUG_TAG, "当前已加载数据count为:" + page);
 				BaseProtocol<T> protocol = getProtocol();
 				final List moreData = (List)protocol.load(page);
 				SystemClock.sleep(1500);

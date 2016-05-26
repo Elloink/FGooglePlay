@@ -1,5 +1,7 @@
 package com.example.gooleplay.fragment;
 
+import java.net.InetAddress;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 

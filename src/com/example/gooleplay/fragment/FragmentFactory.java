@@ -1,6 +1,5 @@
 package com.example.gooleplay.fragment;
 
-import android.support.v4.app.Fragment;
 import android.util.SparseArray;
 
 public class FragmentFactory {
