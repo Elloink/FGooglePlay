@@ -3,6 +3,7 @@ package com.example.gooleplay.activity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
@@ -187,5 +188,5 @@ public class MainActivity extends ActionBarActivity implements
 		Intent i = new Intent(this, DetailActivity.class);
 		startActivity(i);
 	}
-
 }
+
