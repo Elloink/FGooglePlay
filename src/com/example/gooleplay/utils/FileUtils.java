@@ -57,4 +57,28 @@ public class FileUtils {
 		}
 		return cacheFile;
 	}
+	
+	/**
+	 * 获得放置安装包的缓存路径
+	 * @return
+	 */
+	public static File getDownloadFile() {
+		File cacheFile = null;
+		//检查内存卡是否可用
+		if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+			//如果可用
+			//构建cache路径
+			cacheFile = new File(EXTERNAL_STORAGE_PATH , "/GooglePlay/cache/apk");
+			if(!cacheFile.exists()) {
+				cacheFile.mkdirs();
+			}
+		} else {
+			//不可用则在"data/data"目录下构建缓存文件
+			cacheFile = new File(DATA_CACHE_PATH + "/apk");
+			if(!cacheFile.exists()) {
+				cacheFile.mkdirs();
+			}
+		}
+		return cacheFile;
+	}
 }
