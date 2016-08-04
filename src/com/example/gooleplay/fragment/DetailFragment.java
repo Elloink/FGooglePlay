@@ -1,5 +1,7 @@
 package com.example.gooleplay.fragment;
 
+import java.io.File;
+
 import android.os.SystemClock;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,10 +15,10 @@ import com.example.gooleplay.R;
 import com.example.gooleplay.adapter.DetailRecyclerAdapter;
 import com.example.gooleplay.bean.AppDataBean;
 import com.example.gooleplay.bussiness.DownloadManager;
-import com.example.gooleplay.bussiness.Observable;
-import com.example.gooleplay.bussiness.Observable.Observer;
+import com.example.gooleplay.bussiness.DownloadManager.Observer;
 import com.example.gooleplay.gloable.PageStateCode;
 import com.example.gooleplay.protocol.DetailProtocol;
+import com.example.gooleplay.utils.FileUtils;
 
 public class DetailFragment extends BaseFragment implements OnClickListener , Observer {
 	private String packageName;
@@ -52,11 +54,12 @@ public class DetailFragment extends BaseFragment implements OnClickListener , Ob
 		
 		
 		manager = DownloadManager.getInstance();
-		if(!manager.check(packageName)) {
-			//如果是还没有创建被观察者
-			manager.createObservable(data.getDownloadUrl(), packageName);
-		}
 		manager.registeObserver(this, packageName);
+		File f = new File(FileUtils.getDownloadFile() + packageName + ".apk");
+		if(f.exists() && f.length() == data.getSize()) {
+			manager.setState(packageName, manager.DONE_STATE);
+		}
+		f = null;
 
 		return rootView;
 	}
@@ -103,16 +106,16 @@ public class DetailFragment extends BaseFragment implements OnClickListener , Ob
 		System.out.println("DetailFragment接收到了发来的更新信息 " + currentState);
 		
 		switch (currentState) {
-		case Observable.DONE_STATE:
+		case DownloadManager.DONE_STATE:
 			btnDownload.setText("安装");
 			pbProgress.setProgress(100);
 			break;
-		case Observable.DOWNLOADING_STATE:
+		case DownloadManager.DOWNLOADING_STATE:
 			break;
-		case Observable.IDLE_STATE:
+		case DownloadManager.IDLE_STATE:
 			btnDownload.setText("下载");
 			break;
-		case Observable.PAUSE_STATE:
+		case DownloadManager.PAUSE_STATE:
 			btnDownload.setText("暂停");
 			break;
 
@@ -128,8 +131,14 @@ public class DetailFragment extends BaseFragment implements OnClickListener , Ob
 		System.out.println("DetailFragment接收到了发来的更新信息 " + currProgress  + "/" + total);
 	}
 	
-	class A {
-		
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		//反注册
+		manager.unRegisteObserver(this, packageName);
+		//置为空
+		manager = null;
 	}
+	
 
 }

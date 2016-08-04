@@ -10,7 +10,6 @@ import android.util.Log;
 public class HttpUrlUtils {
 	private static final String DEBUG_TAG = "HttpUrlUtils";
 	private static final String HOME_URL = "http://127.0.0.1:8090/";
-	
 	/**
 	 * 获取到图片的链接
 	 * @param imageName
@@ -34,12 +33,12 @@ public class HttpUrlUtils {
 	public static String getDetailsUrl(String packageName) {
 		return HOME_URL + "detail?packageName=" + packageName;
 	}
-	
-	public static String getDownloadUrl(String url , long currentProgress) {
+	//http://127.0.0.1:8090/download?name=xxx.xxx.xxx&range=111" + 
+	public static String getDownloadUrl(String packageName , long currentProgress) {
 		if(currentProgress == -1) {
-			return HOME_URL + "download?name=" + url;
+			return HOME_URL + "download?name=" + packageName;
 		}
-		Log.d(DEBUG_TAG, "获取到的下载链接为：" + HOME_URL + "download?name=" + url + "&range=" + currentProgress);
-		return HOME_URL + "download?name=" + url + "&range=" + currentProgress;
+		Log.d(DEBUG_TAG, "获取到的下载链接为：" + HOME_URL + "download?name=" + packageName + "&range=" + currentProgress);
+		return HOME_URL + "download?name=" + packageName + "&range=" + currentProgress;
 	}
 }
